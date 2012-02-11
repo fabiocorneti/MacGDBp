@@ -158,6 +158,10 @@
   [errormsg setHidden:YES];
   if (!self.connection.attached)
     return;
+  if ([[NSUserDefaults standardUserDefaults] boolForKey:@"ContinueToFirstBreakpoint"]) {
+    [self run:self];
+    return;
+  }
   if ([[NSUserDefaults standardUserDefaults] boolForKey:@"BreakOnFirstLine"])
     [self stepIn:self];
 }
